@@ -1,0 +1,31 @@
+{
+  "name": "eslint-prettier-configurator",
+  "version": "0.0.1",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "echo \"Error: no test specified\" && exit 1",
+    "start": ""
+  },
+  "keywords": [
+    "react",
+    "nestjs",
+    "nextjs",
+    "eslint",
+    "eslint-config",
+    "prettier"
+  ],
+  "author": "Dmitry Podkopaev",
+  "license": "ISC",
+  "description": "Configurator eslint and prettier",
+  "devDependencies": {
+    "@types/eslint": "^9.6.1",
+    "@types/node": "^24.0.1",
+    "rimraf": "^6.0.1",
+    "typescript": "^5.8.3"
+  },
+  "peerDependencies": {
+    "eslint": "^9.29.0",
+    "prettier": "^3.5.3"
+  }
+}
