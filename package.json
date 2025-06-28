@@ -1,0 +1,59 @@
+{
+  "name": "@symbux/eslint-prettier-config",
+  "version": "0.0.1",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "",
+    "start": "",
+    "lint": "eslint . --ext .ts ",
+    "format": "prettier --write .",
+    "prepare": "ts-node .husky/install"
+  },
+  "keywords": [
+    "react",
+    "nestjs",
+    "nextjs",
+    "eslint",
+    "eslint-config",
+    "prettier"
+  ],
+  "author": "Dmitry Podkopaev",
+  "license": "ISC",
+  "description": "Configurator eslint and prettier for nestjs and react",
+  "devDependencies": {
+    "@eslint/js": "^9.29.0",
+    "@eslint/json": "^0.12.0",
+    "@trivago/prettier-plugin-sort-imports": "^5.2.2",
+    "@types/eslint": "^9.6.1",
+    "@types/node": "^24.0.5",
+    "@typescript-eslint/eslint-plugin": "^8.35.0",
+    "@typescript-eslint/parser": "^8.35.0",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-jest": "^29.0.1",
+    "eslint-plugin-jest-extended": "^3.0.0",
+    "eslint-plugin-only-warn": "^1.1.0",
+    "eslint-plugin-prettier": "^5.5.0",
+    "eslint-plugin-sonarjs": "^3.0.3",
+    "globals": "^16.2.0",
+    "husky": "^9.1.7",
+    "jiti": "^2.4.2",
+    "lint-staged": "^16.1.2",
+    "npm": "^11.4.2",
+    "rimraf": "^6.0.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.35.0"
+  },
+  "peerDependencies": {
+    "eslint": ">= 9",
+    "prettier": ">= 3"
+  },
+  "lint-staged": {
+    "**/*.ts": [
+      "npm run format",
+      "npm run lint"
+    ]
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "es2015",
+    "lib": ["ESNext"],
+    "module": "nodenext",
+    "rootDir": "./",
+    "moduleResolution": "nodenext",
+    "baseUrl": "./",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "strict": true
+  },
+  "files": ["global.d.ts", "./.husky/install.ts", "./eslint.config.ts"],
+  "include": ["src", "./.husky/", "types"],
+  "exclude": ["dist", "node_modules"]
+}
