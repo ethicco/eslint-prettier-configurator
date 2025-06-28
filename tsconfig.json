@@ -10,7 +10,12 @@
     "esModuleInterop": true,
     "strict": true
   },
-  "files": ["global.d.ts", "./.husky/install.ts", "./eslint.config.ts"],
+  "files": [
+    "./.husky/install.ts",
+    "./eslint.config.ts",
+    "types/eslint-plugin-jest-extended.d.ts",
+    "types/global.d.ts"
+  ],
   "include": ["src", "./.husky/", "types"],
   "exclude": ["dist", "node_modules"]
 }

@@ -4,16 +4,19 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "",
-    "start": "",
-    "lint": "eslint . --ext .ts ",
+    "rename:esm": "/bin/bash ./scripts/fix-mjs.sh",
+    "build:cjs": "tsc -p tsconfig.cjs.json",
+    "build:esm": "tsc -p tsconfig.esm.json && npm run rename:esm",
+    "pre:build": "rimraf ./dist",
+    "pre:package": "ts-node --project ./tsconfig.build.json ./scripts/prepare-package-json",
+    "build": "npm run pre:build && npm run build:cjs && npm run build:esm && npm run pre:package",
+    "dev": "tsc --watch -p tsconfig.cjs.json -p tsconfig.esm.json",
+    "lint": "eslint . --ext .ts --ignore-pattern 'node_modules/*' --ignore-pattern 'dist/*' --ignore-pattern 'scripts/*'",
     "format": "prettier --write .",
     "prepare": "ts-node .husky/install"
   },
   "keywords": [
-    "react",
     "nestjs",
-    "nextjs",
     "eslint",
     "eslint-config",
     "prettier"
@@ -21,12 +24,10 @@
   "author": "Dmitry Podkopaev",
   "license": "ISC",
   "description": "Configurator eslint and prettier for nestjs and react",
-  "devDependencies": {
+  "dependencies": {
     "@eslint/js": "^9.29.0",
     "@eslint/json": "^0.12.0",
     "@trivago/prettier-plugin-sort-imports": "^5.2.2",
-    "@types/eslint": "^9.6.1",
-    "@types/node": "^24.0.5",
     "@typescript-eslint/eslint-plugin": "^8.35.0",
     "@typescript-eslint/parser": "^8.35.0",
     "eslint-config-prettier": "^10.1.5",
@@ -37,14 +38,17 @@
     "eslint-plugin-prettier": "^5.5.0",
     "eslint-plugin-sonarjs": "^3.0.3",
     "globals": "^16.2.0",
-    "husky": "^9.1.7",
     "jiti": "^2.4.2",
+    "typescript-eslint": "^8.35.0"
+  },
+  "devDependencies": {
+    "@types/eslint": "^9.6.1",
+    "@types/node": "^24.0.5",
+    "husky": "^9.1.7",
     "lint-staged": "^16.1.2",
-    "npm": "^11.4.2",
     "rimraf": "^6.0.1",
     "ts-node": "^10.9.2",
-    "typescript": "^5.8.3",
-    "typescript-eslint": "^8.35.0"
+    "typescript": "^5.8.3"
   },
   "peerDependencies": {
     "eslint": ">= 9",
@@ -55,5 +59,21 @@
       "npm run format",
       "npm run lint"
     ]
+  },
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    "./nest": {
+      "require": "./dist/cjs/eslintrc-nest.js",
+      "import": "./dist/esm/eslintrc-nest.mjs",
+      "types": "./dist/types/eslintrc-nest.d.ts"
+    },
+    "./prettierrc-nest": {
+      "require": "./dist/cjs/prettierrc-nest.js",
+      "import": "./dist/esm/prettierrc-nest.mjs",
+      "default": "./dist/esm/prettierrc-nest.mjs",
+      "types": "./dist/types/prettierrc-nest.d.ts"
+    }
   }
 }

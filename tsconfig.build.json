@@ -13,6 +13,7 @@
     "removeComments": true,
     "skipLibCheck": true
   },
-  "include": ["src"],
+  "files": ["types/eslint-plugin-jest-extended.d.ts", "types/global.d.ts"],
+  "include": ["src", "types"],
   "exclude": ["dist", "node_modules"]
 }
