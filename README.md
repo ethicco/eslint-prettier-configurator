@@ -1,0 +1,1 @@
+# -symbax-eslint-prettier-configurator
