@@ -1,1 +1,3 @@
-# -symbax-eslint-prettier-configurator
+# eslint-prettier-configurator
+
+## Configurator rules for Nest JS.
