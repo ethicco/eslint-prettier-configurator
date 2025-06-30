@@ -1,22 +1,24 @@
 import globals from 'globals';
 import eslint from '@eslint/js';
-import tseslint from 'typescript-eslint';
 import sonarjs from 'eslint-plugin-sonarjs';
 import importPlugin from 'eslint-plugin-import';
-import tseslintPlugin from '@typescript-eslint/eslint-plugin';
+import tseslintParser from '@typescript-eslint/typescript-estree';
 import eslintConfigPrettier from 'eslint-config-prettier';
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
 import json from '@eslint/json';
+import love from 'eslint-config-love';
+import type { Linter } from 'eslint';
 
-export default tseslint.config(
+export default [
   eslint.configs.recommended,
   eslintConfigPrettier,
   eslintPluginPrettierRecommended,
-  tseslint.configs.recommended,
   {
+    ...love,
     files: ['**/*.ts'],
     languageOptions: {
       globals: { ...globals.node },
+      parser: tseslintParser,
       parserOptions: {
         ecmaVersion: 'latest',
         sourceType: 'module',
@@ -27,7 +29,6 @@ export default tseslint.config(
     plugins: {
       sonarjs,
       importPlugin,
-      tseslintPlugin,
     },
     ignores: [
       'node_modules',
@@ -45,6 +46,7 @@ export default tseslint.config(
       '.next',
       '.eslintrc.js',
       '.prettierrc.json',
+      '.eslint.config.ts',
     ],
     rules: {
       'no-case-declarations': 'warn',
@@ -53,77 +55,13 @@ export default tseslint.config(
       'no-console': 'warn',
       'prefer-const': 'error',
       'no-unused-vars': 'off',
+      'no-undef': 'off',
       'no-use-before-define': 'off',
-      '@typescript-eslint/no-use-before-define': 'error',
-      '@typescript-eslint/no-empty-interface': 'warn',
-      '@typescript-eslint/array-type': 'off',
-      '@typescript-eslint/no-non-null-assertion': 'warn',
-      '@typescript-eslint/no-explicit-any': 'warn',
       'no-restricted-imports': ['warn', { patterns: ['../../../*', '!@/*'] }],
-      '@typescript-eslint/no-unused-vars': [
-        'warn',
-        {
-          args: 'all',
-          argsIgnorePattern: '^_',
-          caughtErrors: 'all',
-          caughtErrorsIgnorePattern: '^_',
-          destructuredArrayIgnorePattern: '^_',
-          varsIgnorePattern: '^_',
-          ignoreRestSiblings: true,
-        },
-      ],
-      '@typescript-eslint/require-await': 'warn',
-      '@typescript-eslint/return-await': ['warn', 'in-try-catch'],
-      '@typescript-eslint/explicit-function-return-type': [
-        'warn',
-        {
-          allowExpressions: true,
-        },
-      ],
-      '@typescript-eslint/explicit-member-accessibility': [
-        'warn',
-        {
-          overrides: {
-            accessors: 'no-public',
-            constructors: 'no-public',
-            methods: 'no-public',
-            properties: 'no-public',
-            parameterProperties: 'no-public',
-          },
-        },
-      ],
       'padding-line-between-statements': [
         'warn',
         { blankLine: 'always', prev: '*', next: ['return', 'throw'] },
       ],
-      '@typescript-eslint/prefer-find': 'error',
-      '@typescript-eslint/prefer-for-of': 'warn',
-      '@typescript-eslint/prefer-includes': 'warn',
-      '@typescript-eslint/no-implied-eval': 'error',
-      '@typescript-eslint/naming-convention': [
-        'error',
-        {
-          selector: 'variableLike',
-          format: ['camelCase'],
-        },
-        {
-          selector: 'typeLike',
-          format: ['PascalCase'],
-        },
-        {
-          selector: 'enum',
-          format: ['PascalCase'],
-        },
-        {
-          selector: 'enumMember',
-          format: ['UPPER_CASE'],
-        },
-        {
-          selector: 'class',
-          format: ['PascalCase'],
-        },
-      ],
-      '@typescript-eslint/no-magic-numbers': 'off',
     },
   },
   {
@@ -134,5 +72,5 @@ export default tseslint.config(
     rules: {
       'no-irregular-whitespace': 'off',
     },
-  }
-);
+  },
+] satisfies Linter.Config[];
