@@ -1,6 +1,6 @@
 {
   "name": "symbux-eslint-prettier-config",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -24,6 +24,11 @@
   "author": "Dmitry Podkopaev",
   "license": "MIT",
   "description": "Configurator eslint and prettier for nestjs and react",
+  "homepage": "https://github.com/ethicco/eslint-prettier-configurator",
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/ethicco/eslint-prettier-configurator"
+  },
   "dependencies": {
     "@eslint/js": "^9.29.0",
     "@eslint/json": "^0.12.0",
