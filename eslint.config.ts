@@ -1,6 +1,5 @@
 import eslint from '@eslint/js';
 import json from '@eslint/json';
-import tseslintParser from '@typescript-eslint/typescript-estree';
 import type { Linter } from 'eslint';
 import love from 'eslint-config-love';
 import eslintConfigPrettier from 'eslint-config-prettier';
@@ -18,17 +17,18 @@ export default [
     files: ['**/*.ts'],
     languageOptions: {
       globals: { ...globals.node },
-      parser: tseslintParser,
+      parser: require('@typescript-eslint/parser'),
       parserOptions: {
         ecmaVersion: 'latest',
-        sourceType: 'module',
         project: './tsconfig.json',
+        sourceType: 'module',
         tsconfigRootDir: __dirname,
       },
     },
     plugins: {
       sonarjs,
       importPlugin,
+      '@typescript-eslint': require('@typescript-eslint/eslint-plugin'),
     },
     ignores: [
       'node_modules',
@@ -49,6 +49,48 @@ export default [
       '.eslint.config.ts',
     ],
     rules: {
+      '@typescript-eslint/prefer-find': 'error',
+      '@typescript-eslint/prefer-for-of': 'warn',
+      '@typescript-eslint/prefer-includes': 'warn',
+      '@typescript-eslint/no-implied-eval': 'error',
+      '@typescript-eslint/no-use-before-define': 'error',
+      '@typescript-eslint/no-empty-interface': 'warn',
+      '@typescript-eslint/array-type': 'off',
+      '@typescript-eslint/no-non-null-assertion': 'warn',
+      '@typescript-eslint/no-explicit-any': 'warn',
+      '@typescript-eslint/no-unused-vars': [
+        'warn',
+        {
+          args: 'all',
+          argsIgnorePattern: '^_',
+          caughtErrors: 'all',
+          caughtErrorsIgnorePattern: '^_',
+          destructuredArrayIgnorePattern: '^_',
+          varsIgnorePattern: '^_',
+          ignoreRestSiblings: true,
+        },
+      ],
+      '@typescript-eslint/require-await': 'warn',
+      '@typescript-eslint/return-await': ['warn', 'in-try-catch'],
+      '@typescript-eslint/explicit-function-return-type': [
+        'warn',
+        {
+          allowExpressions: true,
+        },
+      ],
+      '@typescript-eslint/explicit-member-accessibility': [
+        'warn',
+        {
+          overrides: {
+            accessors: 'no-public',
+            constructors: 'no-public',
+            methods: 'no-public',
+            properties: 'no-public',
+            parameterProperties: 'no-public',
+          },
+        },
+      ],
+      'consistent-return': 'warn',
       'no-case-declarations': 'warn',
       'no-fallthrough': 'warn',
       eqeqeq: ['error', 'always'],
