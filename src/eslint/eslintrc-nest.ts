@@ -1,10 +1,10 @@
 import globals from 'globals';
-import tseslint from 'typescript-eslint';
 import eslintPluginJest from 'eslint-plugin-jest';
 import jestExtended from 'eslint-plugin-jest-extended';
 import baseConfig from './eslintrc-base';
+import { defineConfig } from 'eslint/config';
 
-module.exports = tseslint.config({
+export default defineConfig({
   files: ['**/*.ts'],
   extends: [
     baseConfig,
@@ -15,7 +15,6 @@ module.exports = tseslint.config({
     globals: { ...globals.jest },
   },
   rules: {
-    '@typescript-eslint/no-empty-function': 'off',
     'jest/no-conditional-expect': 0,
     'no-undef': 0,
   },

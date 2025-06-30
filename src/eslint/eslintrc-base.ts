@@ -2,27 +2,29 @@ import eslint from '@eslint/js';
 import globals from 'globals';
 import eslintConfigPrettier from 'eslint-config-prettier';
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
+import tseslintParser from '@typescript-eslint/typescript-estree';
 import json from '@eslint/json';
-import tseslint from 'typescript-eslint';
 import sonarjs from 'eslint-plugin-sonarjs';
 import importPlugin from 'eslint-plugin-import';
-import tseslintPlugin from '@typescript-eslint/eslint-plugin';
+import { Linter } from 'eslint';
+import love from 'eslint-config-love';
 
-export default tseslint.config(
+export default [
   eslint.configs.recommended,
-  tseslint.configs.recommended,
   eslintConfigPrettier,
   eslintPluginPrettierRecommended,
   {
+    ...love,
     files: ['**/*.{ts,tsx}'],
     languageOptions: {
       globals: { ...globals.node },
+      parser: tseslintParser,
       parserOptions: {
         ecmaVersion: 'latest',
         sourceType: 'module',
       },
     },
-    plugins: { sonarjs, importPlugin, tseslintPlugin },
+    plugins: { sonarjs, importPlugin },
     rules: {
       'no-case-declarations': 'warn',
       'no-fallthrough': 'warn',
@@ -31,56 +33,15 @@ export default tseslint.config(
       'prefer-const': 'error',
       'no-unused-vars': 'off',
       'no-use-before-define': 'off',
-      '@typescript-eslint/no-use-before-define': 'error',
-      '@typescript-eslint/no-empty-interface': 'warn',
-      '@typescript-eslint/array-type': 'off',
-      '@typescript-eslint/no-non-null-assertion': 'warn',
-      '@typescript-eslint/no-explicit-any': 'warn',
       'no-restricted-imports': ['warn', { patterns: ['../../../*', '!@/*'] }],
-      '@typescript-eslint/no-unused-vars': [
-        'warn',
-        {
-          args: 'all',
-          argsIgnorePattern: '^_',
-          caughtErrors: 'all',
-          caughtErrorsIgnorePattern: '^_',
-          destructuredArrayIgnorePattern: '^_',
-          varsIgnorePattern: '^_',
-          ignoreRestSiblings: true,
-        },
-      ],
-      '@typescript-eslint/require-await': 'warn',
-      '@typescript-eslint/return-await': ['warn', 'in-try-catch'],
-      '@typescript-eslint/explicit-function-return-type': [
-        'warn',
-        {
-          allowExpressions: true,
-        },
-      ],
-      '@typescript-eslint/explicit-member-accessibility': [
-        'warn',
-        {
-          overrides: {
-            accessors: 'no-public',
-            constructors: 'no-public',
-            methods: 'no-public',
-            properties: 'no-public',
-            parameterProperties: 'no-public',
-          },
-        },
-      ],
       'padding-line-between-statements': [
         'warn',
         { blankLine: 'always', prev: '*', next: ['return', 'throw'] },
       ],
-      '@typescript-eslint/prefer-find': 'error',
-      '@typescript-eslint/prefer-for-of': 'warn',
-      '@typescript-eslint/prefer-includes': 'warn',
-      '@typescript-eslint/no-implied-eval': 'error',
     },
     settings: {
       'import/parsers': {
-        '@typescript-eslint/parser': ['.ts', '.tsx'],
+        '@typescript-eslint/typescript-estree': ['.ts', '.tsx'],
       },
       'import/resolver': {
         typescript: {
@@ -114,5 +75,5 @@ export default tseslint.config(
     ignores: ['package-lock.json'],
     language: 'json/json',
     ...json.configs.recommended,
-  }
-);
+  },
+] satisfies Linter.Config[];
