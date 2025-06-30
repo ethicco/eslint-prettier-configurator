@@ -19,14 +19,27 @@ Removed all packages eslint and prettier
 #### Eslint
 
 ```ts
-import baseConfig from 'symbux-eslint-prettier-config/eslint-nest';
+import baseConfig from "symbux-eslint-prettier-config/eslint-nest";
 
-export default baseConfig;
+export default [
+  ...baseConfig,
+  {
+    languageOptions: {
+      parserOptions: {
+        project: './tsconfig.json',
+        tsconfigRootDir: __dirname,
+      },
+    },
+    ignores: [
+      'eslint.config.ts'  
+    ],
+  }
+];
 ```
 
 #### Prettier
 
-```ts
+```cjs
 const baseConfig = require('symbux-eslint-prettier-config/prettierrc-nest');
 
 exports.module = {
