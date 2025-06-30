@@ -64,15 +64,16 @@
   ],
   "exports": {
     "./nest": {
-      "require": "./dist/cjs/eslintrc-nest.js",
-      "import": "./dist/esm/eslintrc-nest.mjs",
-      "types": "./dist/types/eslintrc-nest.d.ts"
+      "types": "./dist/types/eslint/eslintrc-nest.d.ts",
+      "require": "./dist/cjs/eslint/eslintrc-nest.js",
+      "import": "./dist/esm/eslint/eslintrc-nest.mjs",
+      "default": "./dist/esm/eslint/eslintrc-nest.mjs"
     },
     "./prettierrc-nest": {
-      "require": "./dist/cjs/prettierrc-nest.js",
-      "import": "./dist/esm/prettierrc-nest.mjs",
-      "default": "./dist/esm/prettierrc-nest.mjs",
-      "types": "./dist/types/prettierrc-nest.d.ts"
+      "types": "./dist/types/prettier/prettierrc-nest.d.ts",
+      "require": "./dist/cjs/prettier/prettierrc-nest.js",
+      "import": "./dist/esm/prettier/prettierrc-nest.mjs",
+      "default": "./dist/esm/prettier/prettierrc-nest.mjs"
     }
   }
 }
