@@ -1,13 +1,13 @@
 import eslint from '@eslint/js';
-import globals from 'globals';
-import eslintConfigPrettier from 'eslint-config-prettier';
-import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
-import tseslintParser from '@typescript-eslint/typescript-estree';
 import json from '@eslint/json';
-import sonarjs from 'eslint-plugin-sonarjs';
-import importPlugin from 'eslint-plugin-import';
+import tseslintParser from '@typescript-eslint/typescript-estree';
 import { Linter } from 'eslint';
 import love from 'eslint-config-love';
+import eslintConfigPrettier from 'eslint-config-prettier';
+import importPlugin from 'eslint-plugin-import';
+import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
+import sonarjs from 'eslint-plugin-sonarjs';
+import globals from 'globals';
 
 export default [
   eslint.configs.recommended,

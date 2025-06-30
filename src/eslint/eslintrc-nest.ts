@@ -1,8 +1,9 @@
-import globals from 'globals';
 import eslintPluginJest from 'eslint-plugin-jest';
 import jestExtended from 'eslint-plugin-jest-extended';
-import baseConfig from './eslintrc-base';
 import { defineConfig } from 'eslint/config';
+import globals from 'globals';
+
+import baseConfig from './eslintrc-base';
 
 export default defineConfig({
   files: ['**/*.ts'],
