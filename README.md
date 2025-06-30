@@ -1,4 +1,8 @@
-# eslint-prettier-configurator
+# Symbux-eslint-prettier-configurator
+
+![NPM License](https://img.shields.io/npm/l/symbux-eslint-prettier-config)
+![GitHub package.json version](https://img.shields.io/github/package-json/v/ethicco/eslint-prettier-configurator)
+
 
 ## Configurator rules for Nest JS.
 
