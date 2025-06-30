@@ -3,3 +3,4 @@ scripts
 dist
 package-lock.json
 .husky/_
+README.md

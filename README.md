@@ -4,7 +4,7 @@
 
 ### Install
 
-``npn i -D `@symbux-eslint-prettier-config/nest``
+```npn i -D symbux-eslint-prettier-config/nest```
 
 ### Use
 
