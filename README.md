@@ -8,6 +8,10 @@
 
 ### Use
 
+#### Prepare
+
+Removed all packages eslint and prettier
+
 #### Eslint
 
 ```ts
