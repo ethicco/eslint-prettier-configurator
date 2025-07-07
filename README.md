@@ -42,7 +42,7 @@ export default [
 ```cjs
 const baseConfig = require('symbux-eslint-prettier-config/prettierrc-nest');
 
-exports.module = {
+module.exports = {
   ...baseConfig,
 };
 ```
