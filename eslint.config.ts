@@ -44,9 +44,9 @@ export default [
       '.DS_Store',
       '.npm',
       '.next',
-      '.eslintrc.js',
-      '.prettierrc.json',
-      '.eslint.config.ts',
+      '.eslintrc.*',
+      '.eslint.*',
+      '.prettierrc.*',
     ],
     rules: {
       '@typescript-eslint/prefer-find': 'error',
