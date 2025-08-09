@@ -11,7 +11,9 @@
     "dev": "tsc --watch -p tsconfig.cjs.json -p tsconfig.esm.json",
     "lint": "eslint . --ext .ts --ignore-pattern 'node_modules/*' --ignore-pattern 'dist/*' --ignore-pattern 'scripts/*'",
     "format": "prettier --write .",
-    "prepare": "ts-node .husky/install"
+    "prepare": "ts-node .husky/install",
+    "pre:publish": "npm publish --dry-run",
+    "publish": "npm publish --access public"
   },
   "keywords": [
     "nestjs",
