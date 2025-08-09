@@ -16,7 +16,7 @@ export default [
     ...love,
     files: ['**/*.{ts,tsx}'],
     languageOptions: {
-      globals: { ...globals.node },
+      globals: { ...globals.node, ...globals.es2015 },
       parser: require('@typescript-eslint/parser'),
       parserOptions: {
         ecmaVersion: 'latest',
