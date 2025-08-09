@@ -14,9 +14,7 @@ export default defineConfig({
     baseConfig,
     eslintPluginJest.configs['flat/recommended'],
     jestExtended.configs['flat/all'],
-    react.configs.flat,
-    reactHooks.configs['recommended-latest'],
-    jsxA11y.flatConfigs.recommended,
+    react.configs.flat['recommended'],
   ],
   languageOptions: {
     globals: { ...globals.jest, ...globals.browser },
@@ -42,5 +40,10 @@ export default defineConfig({
     'react/no-typos': 'warn',
     'react/self-closing-comp': 'warn',
     'react/react-in-jsx-scope': 'off',
+  },
+  settings: {
+    react: {
+      version: 'detect',
+    },
   },
 });

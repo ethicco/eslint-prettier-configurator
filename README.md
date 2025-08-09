@@ -8,9 +8,15 @@
 
 ### Install
 
-```npm i -D symbux-eslint-prettier-config```
-```yarn add -D symbux-eslint-prettier-config```
-```pnpm i -D symbux-eslint-prettier-config```
+```
+npm i -D symbux-eslint-prettier-config
+```
+```
+yarn add -D symbux-eslint-prettier-config
+```
+```
+pnpm i -D symbux-eslint-prettier-config
+```
 
 ### Use
 
