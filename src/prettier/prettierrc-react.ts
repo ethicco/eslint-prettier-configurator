@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 import type { PrettierConfig } from '@trivago/prettier-plugin-sort-imports';
 
 const prettierrc = require('./prettierrc-base');

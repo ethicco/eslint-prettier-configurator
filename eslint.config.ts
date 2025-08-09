@@ -1,7 +1,6 @@
 import eslint from '@eslint/js';
 import json from '@eslint/json';
 import type { Linter } from 'eslint';
-import love from 'eslint-config-love';
 import eslintConfigPrettier from 'eslint-config-prettier';
 import importPlugin from 'eslint-plugin-import';
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
@@ -13,7 +12,6 @@ export default [
   eslintConfigPrettier,
   eslintPluginPrettierRecommended,
   {
-    ...love,
     files: ['**/*.ts'],
     languageOptions: {
       globals: { ...globals.node },

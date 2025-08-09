@@ -29,20 +29,11 @@ Removed all packages eslint and prettier
 ```ts
 import baseConfig from "symbux-eslint-prettier-config/eslint-nest";
 
-export default [
-  ...baseConfig,
-  {
-    languageOptions: {
-      parserOptions: {
-        project: './tsconfig.json',
-        tsconfigRootDir: __dirname,
-      },
-    },
-    ignores: [
-      'eslint.config.ts'  
-    ],
-  }
-];
+export default baseConfig({ 
+  project: './tsconfig.json',
+  tsconfigRootDir: __dirname,
+  ignorePatterns: ['dist']
+});
 ```
 
 #### Prettier
@@ -59,20 +50,12 @@ module.exports = {
 ```ts
 import baseConfig from "symbux-eslint-prettier-config/eslint-react";
 
-export default [
-  ...baseConfig,
-  {
-    languageOptions: {
-      parserOptions: {
-        project: './tsconfig.json',
-        tsconfigRootDir: __dirname,
-      },
-    },
-    ignores: [
-      'eslint.config.ts'  
-    ],
-  }
-];
+export default export default baseConfig({ 
+  project: './tsconfig.json',
+  tsconfigRootDir: __dirname,
+  reactVersion: string,
+  ignorePatterns: ['dist']
+});
 ```
 
 #### Prettier
