@@ -1,6 +1,6 @@
 {
   "name": "symbux-eslint-prettier-config",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "scripts": {
     "rename:esm": "/bin/bash ./scripts/fix-mjs.sh",
     "build:cjs": "tsc -p tsconfig.cjs.json",
