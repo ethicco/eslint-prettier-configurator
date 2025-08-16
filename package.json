@@ -1,6 +1,6 @@
 {
   "name": "symbux-eslint-prettier-config",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "scripts": {
     "rename:esm": "/bin/bash ./scripts/fix-mjs.sh",
     "build:cjs": "tsc -p tsconfig.cjs.json",
@@ -76,14 +76,14 @@
     "./eslint-nest": {
       "types": "./dist/types/eslint/eslintrc-nest.d.ts",
       "require": "./dist/cjs/eslint/eslintrc-nest.js",
-      "import": "./dist/esm/eslint/eslintrc-nest.mjs",
-      "default": "./dist/esm/eslint/eslintrc-nest.mjs"
+      "import": "./dist/esm/eslint/eslintrc-nest.js",
+      "default": "./dist/esm/eslint/eslintrc-nest.js"
     },
     "./prettierrc-nest": {
       "types": "./dist/types/prettier/prettierrc-nest.d.ts",
       "require": "./dist/cjs/prettier/prettierrc-nest.js",
-      "import": "./dist/esm/prettier/prettierrc-nest.mjs",
-      "default": "./dist/esm/prettier/prettierrc-nest.mjs"
+      "import": "./dist/esm/prettier/prettierrc-nest.js",
+      "default": "./dist/esm/prettier/prettierrc-nest.js"
     },
     "./eslint-react": {
       "types": "./dist/types/eslint/eslintrc-react.d.ts",
