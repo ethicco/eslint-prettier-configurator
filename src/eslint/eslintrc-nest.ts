@@ -10,15 +10,20 @@ import importPlugin from 'eslint-plugin-import';
 import eslintConfigPrettier from 'eslint-config-prettier';
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
 import { baseConfig } from './eslintrc-base';
+import { Linter } from 'eslint';
 
 export default ({
   project,
   tsconfigRootDir,
   ignorePatterns = [],
+  customTsRules = {},
+  customJsonRules = {},
 }: {
   project?: string | Array<string>;
   tsconfigRootDir?: string;
   ignorePatterns?: string[];
+  customTsRules?: Partial<Linter.RulesRecord>;
+  customJsonRules?: Partial<Linter.RulesRecord>;
 }): ConfigArray =>
   tseslint.config([
     globalIgnores([
@@ -53,6 +58,7 @@ export default ({
         ...baseConfig.rules,
         'jest/no-conditional-expect': 0,
         'no-undef': 0,
+        ...customTsRules,
       },
       settings: {
         'import/resolver': {
@@ -70,6 +76,7 @@ export default ({
       language: 'json/json',
       rules: {
         'json/no-duplicate-keys': 'error',
+        ...customJsonRules,
       },
       plugins: {
         json,

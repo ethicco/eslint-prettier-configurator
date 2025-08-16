@@ -14,17 +14,22 @@ import sonarjs from 'eslint-plugin-sonarjs';
 import eslintConfigPrettier from 'eslint-config-prettier';
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
 import { baseConfig } from './eslintrc-base';
+import { Linter } from 'eslint';
 
 export default ({
   project,
   tsconfigRootDir,
   reactVersion,
   ignorePatterns = [],
+  customTsRules = {},
+  customJsonRules = {},
 }: {
   project?: string | Array<string>;
   tsconfigRootDir?: string;
   reactVersion: string;
   ignorePatterns?: string[];
+  customTsRules?: Partial<Linter.RulesRecord>;
+  customJsonRules?: Partial<Linter.RulesRecord>;
 }): ConfigArray =>
   tseslint.config([
     globalIgnores([
@@ -83,6 +88,7 @@ export default ({
         'react/no-typos': 'warn',
         'react/self-closing-comp': 'warn',
         'react/react-in-jsx-scope': 'off',
+        ...customTsRules,
       },
       settings: {
         'import/resolver': {
@@ -103,5 +109,8 @@ export default ({
       ignores: ['package-lock.json'],
       language: 'json/json',
       ...json.configs.recommended,
+      rules: {
+        ...customJsonRules,
+      },
     },
   ]);
