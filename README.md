@@ -20,29 +20,42 @@ pnpm i -D symbux-eslint-prettier-config
 
 ### Use
 
+only ESM
+
 #### Prepare
 
 Removed all packages eslint and prettier
 
-#### Eslint
+#### Eslint (NestJS)
 
 ```ts
-import baseConfig from "symbux-eslint-prettier-config/eslint-nest";
+import { fileURLToPath } from 'node:url';
+import { dirname } from 'node:path';
+import { defineConfig } from 'eslint/config';
+import eslintBaseConfig from 'symbux-eslint-prettier-config/eslint-nest';
 
-export default baseConfig({ 
-  project: './tsconfig.json',
-  tsconfigRootDir: __dirname,
-  ignorePatterns: ['dist']
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+const config = defineConfig(...eslintBaseConfig, {
+  languageOptions: {
+    parserOptions: {
+      project: ['./tsconfig.json'],
+      tsconfigRootDir: __dirname,
+    },
+  },
 });
+
+export default config;
 ```
 
-#### Prettier
+#### Prettier (NestJS)
 
-```cjs
-const baseConfig = require('symbux-eslint-prettier-config/prettierrc-nest');
+```ts
+import prettierConfig from "symbux-eslint-prettier-config/prettierrc-nest";
 
-module.exports = {
-  ...baseConfig,
+export default {
+  ...prettierConfig,
 };
 ```
 #### Eslint
@@ -50,21 +63,31 @@ module.exports = {
 ```ts
 import baseConfig from "symbux-eslint-prettier-config/eslint-react";
 
-export default export default baseConfig({ 
-  project: './tsconfig.json',
-  tsconfigRootDir: __dirname,
-  reactVersion: string,
-  ignorePatterns: ['dist']
+import { fileURLToPath } from 'node:url';
+import { dirname } from 'node:path';
+import { defineConfig } from 'eslint/config';
+import eslintBaseConfig from 'symbux-eslint-prettier-config/eslint-react';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+const config = defineConfig(...eslintBaseConfig, {
+  languageOptions: {
+    parserOptions: {
+      project: ['./tsconfig.json'],
+      tsconfigRootDir: __dirname,
+    },
+  },
 });
 ```
 
 #### Prettier
 
-```cjs
-const baseConfig = require('symbux-eslint-prettier-config/prettierrc-react');
+```ts
+import prettierConfig from "symbux-eslint-prettier-config/prettierrc-nest";
 
-module.exports = {
-  ...baseConfig,
+export default {
+  ...prettierConfig,
 };
 ```
 
