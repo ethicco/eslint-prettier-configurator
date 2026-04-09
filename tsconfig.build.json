@@ -1,9 +1,11 @@
 {
   "compilerOptions": {
+    "target": "ES2022",
     "lib": ["ESNext"],
     "rootDir": "./src",
-    "moduleResolution": "node",
-    "baseUrl": "./",
+    "outDir": "./dist",
+    "moduleResolution": "nodenext",
+    "module": "nodenext",
     "declaration": true,
     "declarationDir": "./dist/types",
     "allowSyntheticDefaultImports": true,

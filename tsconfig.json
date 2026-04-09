@@ -1,11 +1,11 @@
 {
   "compilerOptions": {
-    "target": "es2015",
+    "target": "es2023",
     "lib": ["ESNext"],
     "module": "nodenext",
+    "types": ["node"],
     "rootDir": "./",
     "moduleResolution": "nodenext",
-    "baseUrl": "./",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "strict": true

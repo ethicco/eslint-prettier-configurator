@@ -1,6 +1,6 @@
 import type { PrettierConfig } from '@trivago/prettier-plugin-sort-imports';
 
-module.exports = {
+export default {
   trailingComma: 'all',
   tabWidth: 2,
   semi: true,
